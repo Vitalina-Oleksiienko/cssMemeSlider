@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             img: './images/9971683.jpg',
-            text: 'What kind of questions are you asking, man?!'
+            text: 'What are you asking, man?!'
         },
         {
             img: './images/pexels-pixabay-209037.jpg',
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             img: './images/pexels-tranmautritam-2194261.jpg',
-            text: 'What do you mean, “the deadline is today”?'
+            text: 'Is the deadline today??????'
         }
     ];
 
@@ -123,17 +123,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.slider-item');
     const dots = document.querySelectorAll('.dot');
 
+    // function showSlide(index) {
+
+    //     slides.forEach((slide) => {
+    //         slide.classList.remove('active');
+    //     });
+    //     slides[index].classList.add('active');
+
+    //     dots.forEach((dot) => {
+    //         dot.classList.remove('active');
+    //     });
+    //     dots[index].classList.add('active');
+    // }
     function showSlide(index) {
-        slides.forEach((slide) => {
+    slides.forEach((slide, i) => {
+        if (i === index) {
+            slide.style.display = 'block';
+            setTimeout(() => {
+                slide.classList.add('active');
+            }, 200);
+        } else {
             slide.classList.remove('active');
-        });
-        slides[index].classList.add('active');
+            setTimeout(() => {
+                slide.style.display = 'none';
+            }, 5);
+        }
+    });
 
         dots.forEach((dot) => {
             dot.classList.remove('active');
         });
         dots[index].classList.add('active');
     }
+
+
 
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
