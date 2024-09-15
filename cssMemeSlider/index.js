@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
             img: './images/5622704.jpg',
             text: 'You like living dangerously'
         },
-        {
-            img: './images/9299765.jpg',
-            text: 'No stress...'
-        },
+        // {
+        //     img: './images/5692827.jpg',
+        //     text: "It's a fashion..."
+        // },
         {
             img: './images/9971683.jpg',
             text: 'What are you asking, man?!'
@@ -100,6 +100,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentSlide = 0;
 
+    // slidesData.forEach((slide, index) => {
+    //     const slideItem = document.createElement('div');
+    //     slideItem.classList.add('slider-item');
+    //     if (index === 0) slideItem.classList.add('active');
+
+    //     slideItem.innerHTML = `
+    //         <img src="${slide.img}" alt="Slide ${index + 1}">
+    //         <div>
+    //             <p>${slide.text}</p>
+    //         </div>
+    //     `;
+    //     sliderContainer.appendChild(slideItem);
+
+    //     const dot = document.createElement('span');
+    //     dot.classList.add('dot');
+    //     if (index === 0) dot.classList.add('active');
+    //     dot.setAttribute('data-slide', index);
+    //     dotsContainer.appendChild(dot);
+    // });
     slidesData.forEach((slide, index) => {
         const slideItem = document.createElement('div');
         slideItem.classList.add('slider-item');
@@ -113,12 +132,30 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         sliderContainer.appendChild(slideItem);
 
+        const dotWrapper = document.createElement('div');
+        dotWrapper.classList.add('dot-wrapper');
+
         const dot = document.createElement('span');
         dot.classList.add('dot');
         if (index === 0) dot.classList.add('active');
         dot.setAttribute('data-slide', index);
-        dotsContainer.appendChild(dot);
+
+        dotWrapper.appendChild(dot);
+
+        dotsContainer.appendChild(dotWrapper);
     });
+
+    const dotWrappers = document.querySelectorAll('.dot-wrapper');
+
+    dotWrappers.forEach(dotWrapper => {
+        dotWrapper.addEventListener('click', function() {
+            let slideIndex = parseInt(this.querySelector('.dot').getAttribute('data-slide'));
+            showSlide(slideIndex);
+            currentSlide = slideIndex;
+        });
+    });
+
+
 
     const slides = document.querySelectorAll('.slider-item');
     const dots = document.querySelectorAll('.dot');
