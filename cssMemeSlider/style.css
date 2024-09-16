@@ -1,11 +1,9 @@
-body {
+/* body {
     background: darkslategrey;
     font-size: 1rem;
 }
 
 .slider-container {
-    /* width: 100%; */
-    /* max-width: 65.625rem; */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -14,7 +12,6 @@ body {
 }
 
 .slider {
-    /* display: flex; */
     width: 100%;
 }
 
@@ -57,8 +54,6 @@ body {
 .dots-container {
     display: flex;
     justify-content: flex-end;
-    /* margin-left: 10px; */
-    /* text-align: center; */
     margin-top: -4.06rem;
 }
 
@@ -117,5 +112,143 @@ body {
     .dots-container {
         margin-top: -8.12rem;
         height: 5.62rem;
+    }
+} */
+
+
+body {
+    background: darkslategrey;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.slider-container {
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.slider-item {
+    width: 100%;
+    flex: 1 0 100%;
+    text-align: center;
+}
+
+.slider-item img {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 0.5rem;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+#slide4:checked~.slides {
+    transform: translateX(-300%);
+}
+.captions {
+    margin-right: auto;
+}
+.captions .caption {
+    display: none;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+#slide1:checked~.caption-dots-container .captions #caption1 {
+    display: block;
+}
+
+#slide2:checked~.caption-dots-container .captions #caption2 {
+    display: block;
+}
+
+#slide3:checked~.caption-dots-container .captions #caption3 {
+    display: block;
+}
+
+#slide4:checked~.caption-dots-container .captions #caption4 {
+    display: block;
+}
+
+.caption-dots-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0.625rem;
+}
+
+.dot {
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0.5rem;
+    background-color: #5272dd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    /* padding: 0.5rem; */
+}
+
+.dot:hover {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+input[type="radio"]#slide1:checked~.caption-dots-container .dots-container label[for="slide1"],
+input[type="radio"]#slide2:checked~.caption-dots-container .dots-container label[for="slide2"],
+input[type="radio"]#slide3:checked~.caption-dots-container .dots-container label[for="slide3"],
+input[type="radio"]#slide4:checked~.caption-dots-container .dots-container label[for="slide4"] {
+    background-color: transparent;
+    border: 0.125rem solid #f3f4f7;
+}
+
+input[type="radio"]#slide1:checked~.caption-dots-container .dots-container label[for="slide1"]:hover,
+input[type="radio"]#slide2:checked~.caption-dots-container .dots-container label[for="slide2"]:hover,
+input[type="radio"]#slide3:checked~.caption-dots-container .dots-container label[for="slide3"]:hover,
+input[type="radio"]#slide4:checked~.caption-dots-container .dots-container label[for="slide4"]:hover {
+    border: 0.125rem solid grey;
+}
+
+@media screen and (max-width: 506px) {
+    .caption-dots-container {
+        flex-direction: column-reverse;
     }
 }
