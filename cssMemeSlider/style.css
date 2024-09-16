@@ -261,37 +261,60 @@ input[type="radio"] {
 .dots-container {
     display: flex;
     justify-content: flex-end;
-    padding: 1rem 0.625rem;
+}
+
+.dot-wrapper {
+    cursor: pointer;
+}
+
+.dot-area {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    cursor: pointer;
 }
 
 .dot {
-    cursor: pointer;
-    height: 1rem;
+    display: inline-block;
     width: 1rem;
-    margin: 0 0.5rem;
+    height: 1rem;
     background-color: #5272dd;
     border-radius: 50%;
-    display: inline-block;
     transition: background-color 0.3s, transform 0.3s;
 }
-
 .dot:hover {
-    background-color: #fff;
-    transform: scale(1.2);
+    background-color: #eff0f5;
+}
+input[type="radio"]#slide1:checked~.slides {
+    transform: translateX(0%);
 }
 
-input[type="radio"]#slide1:checked~.caption-dots-container .dots-container label[for="slide1"],
-input[type="radio"]#slide2:checked~.caption-dots-container .dots-container label[for="slide2"],
-input[type="radio"]#slide3:checked~.caption-dots-container .dots-container label[for="slide3"],
-input[type="radio"]#slide4:checked~.caption-dots-container .dots-container label[for="slide4"] {
+input[type="radio"]#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+input[type="radio"]#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+input[type="radio"]#slide4:checked~.slides {
+    transform: translateX(-300%);
+}
+
+input[type="radio"]#slide1:checked~.caption-dots-container .dot-wrapper label[for="slide1"] .dot,
+input[type="radio"]#slide2:checked~.caption-dots-container .dot-wrapper label[for="slide2"] .dot,
+input[type="radio"]#slide3:checked~.caption-dots-container .dot-wrapper label[for="slide3"] .dot,
+input[type="radio"]#slide4:checked~.caption-dots-container .dot-wrapper label[for="slide4"] .dot {
     background-color: transparent;
     border: 0.125rem solid #f3f4f7;
 }
 
-input[type="radio"]#slide1:checked~.caption-dots-container .dots-container label[for="slide1"]:hover,
-input[type="radio"]#slide2:checked~.caption-dots-container .dots-container label[for="slide2"]:hover,
-input[type="radio"]#slide3:checked~.caption-dots-container .dots-container label[for="slide3"]:hover,
-input[type="radio"]#slide4:checked~.caption-dots-container .dots-container label[for="slide4"]:hover {
+input[type="radio"]#slide1:checked~.caption-dots-container .dot-wrapper label[for="slide1"] .dot:hover,
+input[type="radio"]#slide2:checked~.caption-dots-container .dot-wrapper label[for="slide2"] .dot:hover,
+input[type="radio"]#slide3:checked~.caption-dots-container .dot-wrapper label[for="slide3"] .dot:hover,
+input[type="radio"]#slide4:checked~.caption-dots-container .dot-wrapper label[for="slide4"] .dot:hover {
     border: 0.125rem solid grey;
 }
 
