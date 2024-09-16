@@ -149,6 +149,15 @@ body {
     width: 100%;
     flex: 1 0 100%;
     text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#slide1:checked~.slides .slider-item:nth-child(1),
+#slide2:checked~.slides .slider-item:nth-child(2),
+#slide3:checked~.slides .slider-item:nth-child(3),
+#slide4:checked~.slides .slider-item:nth-child(4) {
+    opacity: 1;
 }
 
 .slider-item img {
@@ -176,30 +185,70 @@ input[type="radio"] {
 #slide4:checked~.slides {
     transform: translateX(-300%);
 }
+
 .captions {
-    margin-right: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 .captions .caption {
-    display: none;
+    opacity: 0;
     color: #fff;
     font-size: 1.5rem;
+    text-align: left;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    width: 100%;
+    flex-shrink: 0;
 }
 
 #slide1:checked~.caption-dots-container .captions #caption1 {
-    display: block;
+    opacity: 1;
+    transform: translateX(0);
 }
-
 #slide2:checked~.caption-dots-container .captions #caption2 {
-    display: block;
+    opacity: 1;
+    transform: translateX(-100%);
 }
-
 #slide3:checked~.caption-dots-container .captions #caption3 {
-    display: block;
+    opacity: 1;
+    transform: translateX(-200%);
+}
+#slide4:checked~.caption-dots-container .captions #caption4 {
+    opacity: 1;
+    transform: translateX(-300%);
 }
 
+/* .captions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    margin-right: auto;
+}
+
+.captions .caption {
+    display: none;
+    opacity: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: left;
+    transition: opacity 0.5s ease;
+}
+
+#slide1:checked~.caption-dots-container .captions #caption1,
+#slide2:checked~.caption-dots-container .captions #caption2,
+#slide3:checked~.caption-dots-container .captions #caption3,
 #slide4:checked~.caption-dots-container .captions #caption4 {
     display: block;
-}
+    opacity: 1;
+} */
 
 .caption-dots-container {
     display: flex;
