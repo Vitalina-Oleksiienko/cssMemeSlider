@@ -1,0 +1,325 @@
+/* body {
+    background: darkslategrey;
+    font-size: 1rem;
+}
+
+.slider-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 5vw 15vw;
+}
+
+.slider {
+    width: 100%;
+}
+
+.slider-item {
+    flex: 0 0 70%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.slider-item.active {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.slider-item.show {
+    display: block;
+}
+.slider-item img {
+    width: 100%;
+    max-height: 70vh;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+.slider-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.slider-item p {
+    font-size: 1.5rem;
+    text-align: left;
+    flex: 1;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -4.06rem;
+}
+
+.dot {
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0.5rem;
+    background-color: #5272dd;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: transparent;
+    border: 0.125rem solid #5272dd;
+}
+
+.dot:hover {
+    background-color: azure;
+    transition: background-color 0.4s, transform 0.3s;
+    transform: scale(1.2);
+}
+
+.dot.active:hover {
+    background-color: transparent;
+    border: 0.125rem solid #9ea0a3;
+}
+.dot-wrapper {
+    display: inline-block;
+    padding: 1rem 0;
+}
+
+@media screen and (max-width: 680px) {
+    .slider-container {
+        align-items: center;
+    }
+
+    .slider-item div {
+        margin-top: 2.5rem;
+    }
+
+    .dots-container {
+        justify-content: center;
+        margin-top: -6.56rem;
+        height: 3.38rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .dots-container {
+        height: 4.06rem;
+    }
+}
+@media screen and (max-width: 405px) {
+    .dots-container {
+        margin-top: -8.12rem;
+        height: 5.62rem;
+    }
+} */
+
+
+body {
+    background: darkslategrey;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.slider-container {
+    width: 80%;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.slider-item {
+    width: 100%;
+    flex: 1 0 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#slide1:checked~.slides .slider-item:nth-child(1),
+#slide2:checked~.slides .slider-item:nth-child(2),
+#slide3:checked~.slides .slider-item:nth-child(3),
+#slide4:checked~.slides .slider-item:nth-child(4) {
+    opacity: 1;
+}
+
+.slider-item img {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 0.5rem;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+#slide4:checked~.slides {
+    transform: translateX(-300%);
+}
+
+.captions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    overflow: hidden;
+    /* white-space: nowrap; */
+}
+
+.captions .caption {
+    opacity: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: left;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+#slide1:checked~.caption-dots-container .captions #caption1 {
+    opacity: 1;
+    transform: translateX(0);
+}
+#slide2:checked~.caption-dots-container .captions #caption2 {
+    opacity: 1;
+    transform: translateX(-100%);
+}
+#slide3:checked~.caption-dots-container .captions #caption3 {
+    opacity: 1;
+    transform: translateX(-200%);
+}
+#slide4:checked~.caption-dots-container .captions #caption4 {
+    opacity: 1;
+    transform: translateX(-300%);
+}
+
+/* .captions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    margin-right: auto;
+}
+
+.captions .caption {
+    display: none;
+    opacity: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: left;
+    transition: opacity 0.5s ease;
+}
+
+#slide1:checked~.caption-dots-container .captions #caption1,
+#slide2:checked~.caption-dots-container .captions #caption2,
+#slide3:checked~.caption-dots-container .captions #caption3,
+#slide4:checked~.caption-dots-container .captions #caption4 {
+    display: block;
+    opacity: 1;
+} */
+
+.caption-dots-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dot-wrapper {
+    cursor: pointer;
+}
+
+.dot-area {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    cursor: pointer;
+}
+
+.dot {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-color: #5272dd;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.dot:hover {
+    background-color: #eff0f5;
+}
+input[type="radio"]#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+input[type="radio"]#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+input[type="radio"]#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+input[type="radio"]#slide4:checked~.slides {
+    transform: translateX(-300%);
+}
+
+input[type="radio"]#slide1:checked~.caption-dots-container .dot-wrapper label[for="slide1"] .dot,
+input[type="radio"]#slide2:checked~.caption-dots-container .dot-wrapper label[for="slide2"] .dot,
+input[type="radio"]#slide3:checked~.caption-dots-container .dot-wrapper label[for="slide3"] .dot,
+input[type="radio"]#slide4:checked~.caption-dots-container .dot-wrapper label[for="slide4"] .dot {
+    background-color: transparent;
+    border: 0.125rem solid #f3f4f7;
+}
+
+input[type="radio"]#slide1:checked~.caption-dots-container .dot-wrapper label[for="slide1"] .dot:hover,
+input[type="radio"]#slide2:checked~.caption-dots-container .dot-wrapper label[for="slide2"] .dot:hover,
+input[type="radio"]#slide3:checked~.caption-dots-container .dot-wrapper label[for="slide3"] .dot:hover,
+input[type="radio"]#slide4:checked~.caption-dots-container .dot-wrapper label[for="slide4"] .dot:hover {
+    border: 0.125rem solid grey;
+}
+
+@media screen and (max-width: 31.625rem) {
+    .caption-dots-container {
+        flex-direction: column-reverse;
+    }
+}
